@@ -1,0 +1,259 @@
+public class StringMethodsDemo {
+    public static void main(String[] args) {
+        String s = new String("hi");
+        String str = "hello";
+
+        System.out.println("Original Strings: s = \"" + s + "\", str = \"" + str + "\"\n");
+
+        // I) charAt
+        System.out.println("charAt(1): " + str.charAt(1));  // e
+
+        // II) length
+        System.out.println("length(): " + str.length()); // 5
+
+        // III) substring(fromIndex)
+        System.out.println("substring(2): " + str.substring(2)); // llo
+
+        // IV) substring(fromIndex, toIndex)
+        System.out.println("substring(1,4): " + str.substring(1,4)); // ell
+
+        // V) split(regex)
+        String[] parts = "a,b,c".split(",");
+        System.out.print("split(\",\"): ");
+        for (String p : parts) System.out.print(p + " ");
+        System.out.println();
+
+        // VI) split(regex, limit)
+        String[] parts2 = "a,b,c".split(",", 2);
+        System.out.print("split(\",\",2): ");
+        for (String p : parts2) System.out.print(p + " ");
+        System.out.println();
+
+        // VII) indexOf(char)
+        System.out.println("indexOf('l'): " + str.indexOf('l')); // 2
+
+        // IX) indexOf(String)
+        System.out.println("indexOf(\"lo\"): " + str.indexOf("lo")); // 3
+
+        // X) lastIndexOf(char)
+        System.out.println("lastIndexOf('l'): " + str.lastIndexOf('l')); // 3
+
+        // XI) lastIndexOf(String)
+        System.out.println("lastIndexOf(\"lo\"): " + str.lastIndexOf("lo")); // 3
+
+        // XIII) equals
+        System.out.println("equals(\"hello\"): " + str.equals("hello")); // true
+
+        // XIV) equalsIgnoreCase
+        System.out.println("equalsIgnoreCase(\"HELLO\"): " + str.equalsIgnoreCase("HELLO")); // true
+
+        // XV) toLowerCase
+        System.out.println("toLowerCase(): " + "JAVA".toLowerCase()); // java
+
+        // XVI) toUpperCase
+        System.out.println("toUpperCase(): " + str.toUpperCase()); // HELLO
+
+        // XVII) concat
+        System.out.println("concat(\" world\"): " + str.concat(" world")); // hello world
+
+        // XVIII) compareTo
+        System.out.println("compareTo(\"hello\"): " + str.compareTo("hello")); // 0
+        System.out.println("compareTo(\"abc\"): " + str.compareTo("abc")); // positive
+        System.out.println("compareTo(\"zzz\"): " + str.compareTo("zzz")); // negative
+
+        // XIX) toCharArray
+        char[] chars = str.toCharArray();
+        System.out.print("toCharArray(): ");
+        for (char c : chars) System.out.print(c + " ");
+        System.out.println();
+
+        // XX) getBytes
+        byte[] bytes = str.getBytes();
+        System.out.print("getBytes(): ");
+        for (byte b : bytes) System.out.print(b + " ");
+        System.out.println();
+
+        // XXI) join
+        String joined = String.join("-", "one", "two", "three");
+        System.out.println("join(\"-\", ...): " + joined);
+
+        // XXI) replace(char old, char new)
+        System.out.println("replace('o','b'): " + str.replace('o','b')); // hellb
+
+        // XXII) replaceAll (regex)
+        String replaced = "abc123xyz".replaceAll("[0-9]", "#");
+        System.out.println("replaceAll(\"[0-9]\", \"#\"): " + replaced); // abc###xyz
+
+        // XXIII) matches
+        System.out.println("\"hello\".matches(\"[a-z]+\")): " + str.matches("[a-z]+")); // true
+
+        // ---- Extra useful methods ----
+        // trim()
+        String spaced = "   hello   ";
+        System.out.println("trim(): \"" + spaced.trim() + "\"");
+
+        // startsWith
+        System.out.println("startsWith(\"he\"): " + str.startsWith("he")); // true
+
+        // endsWith
+        System.out.println("endsWith(\"lo\"): " + str.endsWith("lo")); // true
+
+        // contains
+        System.out.println("contains(\"ell\"): " + str.contains("ell")); // true
+    }
+}
+
+
+
+
+public class StringBufferMethodsDemo {
+    public static void main(String[] args) {
+        StringBuffer sb = new StringBuffer("hello");
+
+        System.out.println("Original StringBuffer: " + sb + "\n");
+
+        // 1) append()
+        sb.append(" world");
+        System.out.println("append(\" world\"): " + sb);
+
+        // 2) insert()
+        sb.insert(5, " Java");
+        System.out.println("insert(5, \" Java\"): " + sb);
+
+        // 3) replace()
+        sb.replace(6, 10, "C++");
+        System.out.println("replace(6,10,\"C++\"): " + sb);
+
+        // 4) delete()
+        sb.delete(6, 9);
+        System.out.println("delete(6,9): " + sb);
+
+        // 5) reverse()
+        sb.reverse();
+        System.out.println("reverse(): " + sb);
+        sb.reverse(); // put it back
+
+        // 6) capacity()
+        System.out.println("capacity(): " + sb.capacity());
+
+        // 7) length()
+        System.out.println("length(): " + sb.length());
+
+        // 8) charAt()
+        System.out.println("charAt(1): " + sb.charAt(1));
+
+        // 9) setCharAt()
+        sb.setCharAt(1, 'A');
+        System.out.println("setCharAt(1, 'A'): " + sb);
+
+        // 10) substring(fromIndex)
+        System.out.println("substring(2): " + sb.substring(2));
+
+        // 11) substring(fromIndex, endIndex)
+        System.out.println("substring(0,5): " + sb.substring(0,5));
+
+        // 12) ensureCapacity()
+        sb.ensureCapacity(50);
+        System.out.println("ensureCapacity(50): capacity = " + sb.capacity());
+
+        // 13) trimToSize()
+        sb.trimToSize();
+        System.out.println("trimToSize(): capacity = " + sb.capacity());
+
+        // 14) deleteCharAt()
+        sb.deleteCharAt(0);
+        System.out.println("deleteCharAt(0): " + sb);
+
+        // 15) indexOf()
+        System.out.println("indexOf(\"lo\"): " + sb.indexOf("lo"));
+
+        // 16) lastIndexOf()
+        System.out.println("lastIndexOf(\"o\"): " + sb.lastIndexOf("o"));
+
+        // 17) toString()
+        String str = sb.toString();
+        System.out.println("toString(): " + str);
+
+        // 18) insert different types
+        sb.insert(0, 123);
+        System.out.println("insert int at start: " + sb);
+    }
+}
+
+
+
+
+
+public class StringBuilderMethodsDemo {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("hello");
+
+        System.out.println("Original StringBuilder: " + sb + "\n");
+
+        // 1) append()
+        sb.append(" world");
+        System.out.println("append(\" world\"): " + sb);
+
+        // 2) insert()
+        sb.insert(5, " Java");
+        System.out.println("insert(5, \" Java\"): " + sb);
+
+        // 3) replace()
+        sb.replace(6, 10, "C++");
+        System.out.println("replace(6,10,\"C++\"): " + sb);
+
+        // 4) delete()
+        sb.delete(6, 9);
+        System.out.println("delete(6,9): " + sb);
+
+        // 5) reverse()
+        sb.reverse();
+        System.out.println("reverse(): " + sb);
+        sb.reverse(); // put it back
+
+        // 6) capacity()
+        System.out.println("capacity(): " + sb.capacity());
+
+        // 7) length()
+        System.out.println("length(): " + sb.length());
+
+        // 8) charAt()
+        System.out.println("charAt(1): " + sb.charAt(1));
+
+        // 9) setCharAt()
+        sb.setCharAt(1, 'A');
+        System.out.println("setCharAt(1, 'A'): " + sb);
+
+        // 10) substring(fromIndex)
+        System.out.println("substring(2): " + sb.substring(2));
+
+        // 11) substring(fromIndex, endIndex)
+        System.out.println("substring(0,5): " + sb.substring(0,5));
+
+        // 12) ensureCapacity()
+        sb.ensureCapacity(50);
+        System.out.println("ensureCapacity(50): capacity = " + sb.capacity());
+
+        // 13) trimToSize()
+        sb.trimToSize();
+        System.out.println("trimToSize(): capacity = " + sb.capacity());
+
+        // 14) deleteCharAt()
+        sb.deleteCharAt(0);
+        System.out.println("deleteCharAt(0): " + sb);
+
+        // 15) indexOf()
+        System.out.println("indexOf(\"lo\"): " + sb.indexOf("lo"));
+
+        // 16) lastIndexOf()
+        System.out.println("lastIndexOf(\"o\"): " + sb.lastIndexOf("o"));
+
+        // 17) toString()
+        String str = sb.toString();
+        System.out.println("toString(): " + str);
+
+        // 18) insert different types
+        sb.insert(0, 123);
+        System.out.println("insert int at start: " + sb);
+    }
+}
